@@ -1,6 +1,8 @@
 # GPT-Chatbot
 
-# Setup and runnning the applciation
+A custom and personalized chatbot, based on your own data, powered by GPT (using the API token).
+
+# Setup and runnning the application
 
 ## Open API key
 Define your OPENAI_API_KEY as a system variable.
