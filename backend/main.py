@@ -26,7 +26,7 @@ def answer(ques, chat_log = None):
             prompt_text = f'{chat_log}{restart_sequence} {ques}{start_sequence}'
             print(prompt_text)
             response = openai.Completion.create(
-                model = "text-davinci-002",
+                model = "gpt-3.5-turbo-instruct",
                 prompt = prompt_text,
                 temperature = 0.8,
                 max_tokens = 500,
@@ -35,10 +35,12 @@ def answer(ques, chat_log = None):
                 presence_penalty = 0.6,
                 stop = ["User:", "Jan:"]
             ) 
-            # print(response)
-            ans = response['choices'][0]['text']
-            return str(ans)
-        except:
+
+            response_text = str(response['choices'][0]['text'])
+            print('response:', response_text)
+            return response_text
+        except Exception as e:
+            print('Caught an exception:', e)
             try_count = try_count + 1
             if(try_count >= max_try): 
                 return 'GTP3 error'
